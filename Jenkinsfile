@@ -14,7 +14,7 @@ pipeline {
         stage('Execute Test') {
             steps {
                 //sh('echo ${Editor_Credentails_USR}  ${Editor_Credentails_PSW}')
-                bat "npx cypress run --env userID='${Editor_Credentails_USR}',password='${Editor_Credentails_PSW}'"
+                bat "npx cypress run --env userID="'+${Editor_Credentails_USR}+'",password="'+${Editor_Credentails_PSW}'
             }
         }
 

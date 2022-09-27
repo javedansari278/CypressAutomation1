@@ -15,4 +15,9 @@ describe('Login Page suite',()=>{
         cy.log(Cypress.env('password'))
         cy.screenshot()
     })
+
+    it('Click on Login button',()=>{
+        cy.get('[name="login"]').click()
+        cy.get("[class='woocommerce-MyAccount-navigation'] li:nth-child(1) a").should('have.text','Dashboard')
+    })
 })
