@@ -2,8 +2,8 @@ pipeline {
     agent any
 
      environment {
-        userID = env.USERID
-        password    = env.USERPWD
+        userID = 'env.USERID'
+        password = 'env.USERPWD'
     }
 
     stages {
