@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+     environment {
+        userID = env.USERID
+        password    = env.USERPWD
+    }
+
     stages {
         stage('Install Dependency') {
             steps {
@@ -9,7 +14,7 @@ pipeline {
         }
         stage('Execute Test') {
             steps {
-                bat 'npx cypress run --env userID=%USERID%,password=%USERPWD%'
+                bat 'npx cypress run --env userID=${userID},password=${password}'
             }
         }
     }
