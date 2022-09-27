@@ -10,7 +10,7 @@ pipeline {
         stage('Execute Test') {
             envi
             steps {
-                bat 'npx cypress run --env userID=${USERID},password=${USERPWD}'
+                bat 'npx cypress run --env userID=env.USERID,password=env.USERPWD'
             }
         }
     }
