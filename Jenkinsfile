@@ -8,8 +8,9 @@ pipeline {
             }
         }
         stage('Execute Test') {
+            envi
             steps {
-                echo 'Testing..'
+                bat 'npx cypress run --env userID=${USERID},password=${USERPWD}'
             }
         }
     }
