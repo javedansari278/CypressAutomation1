@@ -1,6 +1,10 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  env: {
+    "grepFilterSpecs": true,
+    "grepOmitFiltered": true
+  },
   e2e: {
     baseUrl:"https://practice.automationtesting.in/",
     video:false,
@@ -15,6 +19,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
       require('cypress-mochawesome-reporter/plugin')(on);
+      require('cypress-grep/src/plugin')(config);
+
     },
   },
 });

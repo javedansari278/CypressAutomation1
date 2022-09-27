@@ -1,4 +1,4 @@
-describe('Login Page suite',()=>{
+describe('Login Page suite',{tags:'@Login'},()=>{
     
     before(()=>{
         cy.visit('/'+'my-account')
