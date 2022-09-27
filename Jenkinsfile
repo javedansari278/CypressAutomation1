@@ -12,9 +12,13 @@ pipeline {
             }
         }
         stage('Execute Test') {
+                
             steps {
+                 maskPasswords(varPasswordPairs: [[password: '%USERPWD%', var: 'user_password']]) {
+                    bat "npx cypress run --env userID=%USERID%,password=user_password,grepTags=%Modules%"
+                 }  
                 //  bat "npx cypress run --env userID=%Editor_Credentails_USR%,password=%Editor_Credentails_PSW%,grepTags=%Modules%"
-              bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"
+              
             }
         }
 
