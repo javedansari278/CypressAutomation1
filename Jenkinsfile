@@ -17,5 +17,11 @@ pipeline {
                 bat "npx cypress run --headed --env userID='${userID}',password='${password}'"
             }
         }
+
+        stage('Publish Reports'){
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'cypress\\reports\\html', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+            }
+        }
     }
 }
