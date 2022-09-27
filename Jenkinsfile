@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    //  environment {
-    //    Editor_Credentails=credentials('credentials')
-    // }
+     environment {
+       Editor_Credentails=credentials('credentials')
+    }
 
     stages {
         stage('Install Dependency') {
