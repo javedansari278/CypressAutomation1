@@ -6,6 +6,7 @@ describe('Login Page suite', { tags: '@Login' }, () => {
 
     it('Enter username', () => {
         cy.get('#username').type(Cypress.env('userID'), { log: false })
+        cy.log(process)
         cy.screenshot({ capture: 'runner' })
     })
 
