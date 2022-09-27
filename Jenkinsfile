@@ -14,10 +14,18 @@ pipeline {
         stage('Execute Test') {
                 
             steps { 
-                //  bat "npx cypress run --env userID=%Editor_Credentails_USR%,password=%Editor_Credentails_PSW%,grepTags=%Modules%"
-                bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"
+                wrap([$class: "MaskPasswordsBuildWrapper",
+              varPasswordPairs: [[password: MY_PASSWORD],
+                                 [password: MY_SECRET]]]) {
+                    echo "Password: ${MY_PASSWORD}"
+                    echo "Secret: ${MY_SECRET}"
+                     bat "npx cypress run --env userID=%USERID%,password=${MY_PASSWORD},grepTags=%Modules%"
+                     }
             }
-        }
+                //  bat "npx cypress run --env userID=%Editor_Credentails_USR%,password=%Editor_Credentails_PSW%,grepTags=%Modules%"
+               
+            }
+        
 
         stage('Publish Reports'){
             steps {   
