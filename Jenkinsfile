@@ -13,11 +13,11 @@ pipeline {
         }
         stage('Execute Test') {
             steps { 
-                // wrap([$class: "MaskPasswordsBuildWrapper",
-                // varPasswordPairs: [[password: '%USERPWD%']]]) {
-                //     bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"    
-                // }
-                 bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"
+                wrap([$class: "MaskPasswordsBuildWrapper",
+                varPasswordPairs: [[password: '%USERPWD%']]]) {
+                    bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"    
+                }
+                 //bat "npx cypress run --env userID=%USERID%,password=%USERPWD%,grepTags=%Modules%"
             }
                 //  bat "npx cypress run --env userID=%Editor_Credentails_USR%,password=%Editor_Credentails_PSW%,grepTags=%Modules%"
                
