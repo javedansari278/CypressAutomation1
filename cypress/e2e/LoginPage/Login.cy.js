@@ -5,14 +5,12 @@ describe('Login Page suite',{tags:'@Login'},()=>{
     })
 
     it('Enter username',()=>{
-        cy.get('#username').type(Cypress.env('userID'))
-        cy.log(Cypress.env('userID'))
+        cy.get('#username').type(Cypress.env('userID'),{log:false})
         cy.screenshot({capture:'runner'})
     })
 
     it('Enter Password',()=>{
-        cy.get('#password').type(Cypress.env('password'))
-        cy.log(Cypress.env('password'))
+        cy.get('#password').type(Cypress.env('password'),{log:false})
         cy.screenshot({capture:'runner'})
     })
 
