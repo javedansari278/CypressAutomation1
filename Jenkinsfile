@@ -12,7 +12,6 @@ pipeline {
             }
         }
         stage('Execute Test') {
-                
             steps { 
                 wrap([$class: "MaskPasswordsBuildWrapper",
                 varPasswordPairs: [[password: '%USERPWD%']]]) {
